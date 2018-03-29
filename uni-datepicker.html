@@ -1,4 +1,5 @@
 <!-- juicy-element @version: 0.0.0 @license: MIT -->
+<link rel="import" href="bower_components/vaadin-date-picker/vaadin-date-picker.html">
 <script>
     customElements.define('uni-datepicker', class extends HTMLElement {
         // List of attributes observed for attributeChangedCallback
@@ -9,6 +10,9 @@
         // Fires when an instance of the element is created
         constructor() {
             super();
+            this.attachShadow({mode: 'open'});
+            this.vaadinElement = document.createElement('vaadin-date-picker');
+            this.shadowRoot.appendChild(this.vaadinElement);
         }
         // Fires when an instance was inserted into the document
         connectedCallback() {

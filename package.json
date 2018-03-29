@@ -1,7 +1,7 @@
 {
   "name": "uni-datepicker",
   "version": "0.0.0",
-  "description": "Decorator-like custom element for `input type='date'` -> `vaadin-datepicker`",
+  "description": "Decorator-like custom element for `input type='date'` -> `vaadin-date-picker`",
   "main": "uni-datepicker.html",
   "directories": {
     "test": "test"

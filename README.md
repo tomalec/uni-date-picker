@@ -1,8 +1,8 @@
 # &lt;uni-datepicker&gt;
 
-> A bare minimum custom element starter-kit using [VanillaJS](http://vanilla-js.com/).
->
-> Looking for a working example? Check [hello-world-element](https://github.com/webcomponents/hello-world-element).
+> Decorator-like custom element for `input type='date'` -> `vaadin-date-picker`
+
+Let's you decorate native `input type="date"`, with prettier date-picker.
 
 ## Demo
 
@@ -35,7 +35,16 @@ Or [download as ZIP](https://github.com/tomalec/uni-datepicker/archive/master.zi
 3. Start using it!
 
     ```html
-    <uni-datepicker></uni-datepicker>
+    <uni-datepicker><input type="date"></uni-datepicker>
+    ```
+    Or even in Shadow DOM with distributed child
+    ```html
+    <host-element>
+        <input type="date">
+        <template is="declarative-shadow-dom">
+            <uni-datepicker><slot></slot></uni-datepicker>
+        </template>
+    </host-element>
     ```
 
 ## Options

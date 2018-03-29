@@ -11,11 +11,85 @@
 
     <!-- Imports custom element -->
     <link rel="import" href="uni-datepicker.html">
+    <style>
+        html{
+            display: flex;
+            justify-content: center;
+        }
+        body{
+            display: grid;
+            /* grid-template-columns: auto auto; */
+            grid-column-gap: 2em;
+        }
+        body > *{
+            grid-column: 1 / span 2;
+        }
+        body > .uniform{
+            grid-column: 1;
+        }
+        body > .vaadin{
+            grid-column: 2;
+        }
+        .compare{
+            display: flex;
+        }
+    </style>
 </head>
 <body class="markdown-body">
 
     <!-- Runs custom element -->
     <uni-datepicker></uni-datepicker>
 
+    <h2>Uniform & Vaadin examples</h2>
+
+    <h3>Plain date picker</h3>
+
+    <div class="uniform">
+        <uni-datepicker><input type="date"/></uni-datepicker>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker></vaadin-date-picker>
+    </div>
+
+    <h3>Label attribute</h3>
+    <div class="uniform">
+        <uni-datepicker><label>Pick a date</label><input type="date"/></uni-datepicker>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker label="Pick a date"></vaadin-date-picker>
+    </div>
+
+
+    <h3>Placeholder attribute</h3>
+
+ <vaadin-date-picker placeholder="Pick a date">
+</vaadin-date-picker>
+
+    <h3>Label and placeholder attributes together</h3>
+
+ <vaadin-date-picker label="Birthday" placeholder="Pick a date">
+</vaadin-date-picker>
+
+    <h3>Pre-selected value</h3>
+
+ <vaadin-date-picker label="Birthday" value="1980-08-14">
+</vaadin-date-picker>
+
+    <h3>Disabled and readonly</h3>
+
+ <vaadin-date-picker disabled label="Disabled input" value="1980-08-14"></vaadin-date-picker>
+<vaadin-date-picker readonly label="Readonly input" value="1980-08-14"></vaadin-date-picker>
+
+    <h3>Initial position</h3>
+
+
+ <vaadin-date-picker label="Birthday" initial-position="1980-01-01">
+</vaadin-date-picker>
+
+    <h3>Min and max dates</h3>
+
+
+ <vaadin-date-picker label="June 2017" min="2017-06-01" max="2017-06-30" initial-position="2017-06-01">
+</vaadin-date-picker>
 </body>
 </html>
