@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../uni-datepicker.html">
+</head>
+
+<body>
+    <test-fixture id="element">
+        <template>
+            <uni-datepicker></uni-datepicker>
+        </template>
+    </test-fixture>
+</body>
+<script>
+    var uniDatepicker;
+    describe('uni-datepicker', function() {
+
+        beforeEach(function() {
+            uniDatepicker = fixture('element');
+        });
+
+        it('should be upgraded element', function() {
+            expect(uniDatepicker).to.be.an.instanceOf(HTMLElement);
+            expect(uniDatepicker).to.be.not.an.instanceOf(HTMLUnknownElement);
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "uni-datepicker",
+  "version": "0.0.0",
+  "description": "Decorator-like custom element for `input type='date'` -> `vaadin-datepicker`",
+  "license": "MIT",
+  "main": "uni-datepicker.html",
+  "keywords": [
+    "web-components",
+    "uniform",
+    "datepicker",
+    "date",
+    "vaadin"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "preview.png",
+    "package.json",
+    "Gruntfile.json"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^1.1.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "^6.5.0"
+  }
+}
