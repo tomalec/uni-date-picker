@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 
     <meta charset="utf-8">
@@ -7,45 +8,57 @@
     <link rel="stylesheet" href="http://juicy.github.io/github-markdown-css/github-markdown.css">
 
     <!-- Imports polyfill -->
-    <script src="../webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
 
     <!-- Imports custom element -->
     <link rel="import" href="uni-datepicker.html">
     <style>
-        html{
+        html {
             display: flex;
             justify-content: center;
         }
-        body{
+
+        body {
             display: grid;
             /* grid-template-columns: auto auto; */
             grid-column-gap: 2em;
         }
-        body > *{
-            grid-column: 1 / span 2;
+
+        body>* {
+            grid-column: 1 / span 3;
         }
-        body > .uniform{
+
+        body>.uniform {
             grid-column: 1;
         }
-        body > .vaadin{
+
+        body>.uniform-sd {
             grid-column: 2;
         }
-        .compare{
+
+        body>.vaadin {
+            grid-column: 3;
+        }
+
+        .compare {
             display: flex;
         }
     </style>
 </head>
+
 <body class="markdown-body">
-
-    <!-- Runs custom element -->
-    <uni-datepicker></uni-datepicker>
-
-    <h2>Uniform & Vaadin examples</h2>
+    <h2>Uniform, Uniform in Shadow DOM & Vaadin examples</h2>
 
     <h3>Plain date picker</h3>
 
     <div class="uniform">
-        <uni-datepicker><input type="date"/></uni-datepicker>
+        <uni-datepicker><input type="date" /></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <input type="date" />
+        <template is="shadow-root">
+            <uni-datepicker><slot></slot></uni-datepicker>
+        </template>
     </div>
     <div class="vaadin">
         <vaadin-date-picker></vaadin-date-picker>
@@ -53,7 +66,14 @@
 
     <h3>Label attribute</h3>
     <div class="uniform">
-        <uni-datepicker><label>Pick a date</label><input type="date"/></uni-datepicker>
+        <uni-datepicker><label>Pick a date</label><input type="date" /></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <label>Pick a date</label>
+        <input type="date" />
+        <template is="shadow-root">
+            <uni-datepicker><slot></slot></uni-datepicker>
+        </template>
     </div>
     <div class="vaadin">
         <vaadin-date-picker label="Pick a date"></vaadin-date-picker>
@@ -62,34 +82,121 @@
 
     <h3>Placeholder attribute</h3>
 
- <vaadin-date-picker placeholder="Pick a date">
-</vaadin-date-picker>
+    <div class="uniform">
+        <uni-datepicker><input type="date" placeholder="Pick a date" /></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <input type="date" placeholder="Pick a date" />
+        <template is="shadow-root">
+            <uni-datepicker><slot></slot></uni-datepicker>
+        </template>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker placeholder="Pick a date"></vaadin-date-picker>
+    </div>
 
     <h3>Label and placeholder attributes together</h3>
 
- <vaadin-date-picker label="Birthday" placeholder="Pick a date">
-</vaadin-date-picker>
+    <div class="uniform">
+        <uni-datepicker><label>Birthday</label><input type="date" placeholder="Pick a date" /></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <label slot="my-label">Birthday</label>
+        <input slot="my-date" type="date" placeholder="Pick a date" />
+        <template is="shadow-root">
+            <!-- You can use default slot or individual slots if you need -->
+            <uni-datepicker><slot name="my-date"></slot><slot name="my-label"></slot></uni-datepicker>
+        </template>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker label="Birthday" placeholder="Pick a date"></vaadin-date-picker>
+    </div>
 
     <h3>Pre-selected value</h3>
 
- <vaadin-date-picker label="Birthday" value="1980-08-14">
-</vaadin-date-picker>
+    <div class="uniform">
+        <uni-datepicker><label>Birthday</label><input type="date" value="1980-08-14"/></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <label>Birthday</label>
+        <input type="date" value="1980-08-14"/>
+        <template is="shadow-root">
+            <!-- You can use default slot or individual slots if you need -->
+            <uni-datepicker><slot></slot></uni-datepicker>
+        </template>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker label="Birthday" value="1980-08-14"></vaadin-date-picker>
+    </div>
 
     <h3>Disabled and readonly</h3>
 
- <vaadin-date-picker disabled label="Disabled input" value="1980-08-14"></vaadin-date-picker>
-<vaadin-date-picker readonly label="Readonly input" value="1980-08-14"></vaadin-date-picker>
+    <div class="uniform">
+        <uni-datepicker><label>Disabled input</label><input disabled type="date" value="1980-08-14"/></uni-datepicker>
+        <uni-datepicker><label>Readonly input</label><input readonly type="date" value="1980-08-14"/></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <label slot="disabled">Disabled input</label>
+        <input slot="disabled" disabled type="date" value="1980-08-14"/>
+        <label slot="readonly">Readonly input</label>
+        <input slot="readonly" readonly type="date" value="1980-08-14"/>
+        <template is="shadow-root">
+            <!-- You can use default slot or individual slots if you need -->
+            <uni-datepicker><slot name="disabled"></slot></uni-datepicker>
+            <uni-datepicker><slot name="readonly"></slot></uni-datepicker>
+        </template>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker disabled label="Disabled input" value="1980-08-14"></vaadin-date-picker>
+        <vaadin-date-picker readonly label="Readonly input" value="1980-08-14"></vaadin-date-picker>
+    </div>
 
-    <h3>Initial position</h3>
+    <h3>Initial position*</h3>
+    <small>* - <code>initial-position</code> needs to be attribute set on <code>uni-datepicker</code></small>
 
-
- <vaadin-date-picker label="Birthday" initial-position="1980-01-01">
-</vaadin-date-picker>
+    <div class="uniform">
+        <uni-datepicker initial-position="1980-01-01"><label>Birthday</label><input type="date"/></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <label slot="my-label">Birthday</label>
+        <input slot="my-date" type="date"/>
+        <template is="shadow-root">
+                <!-- You can use default slot or individual slots if you need -->
+                <uni-datepicker initial-position="1980-01-01"><slot name="my-date"></slot><slot name="my-label"></slot></uni-datepicker>
+            </template>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker label="Birthday" initial-position="1980-01-01"></vaadin-date-picker>
+    </div>
 
     <h3>Min and max dates</h3>
 
 
- <vaadin-date-picker label="June 2017" min="2017-06-01" max="2017-06-30" initial-position="2017-06-01">
-</vaadin-date-picker>
+    <div class="uniform">
+        <uni-datepicker initial-position="2017-06-01"><label>June 2017</label><input type="date" min="2017-06-01" max="2017-06-30"/></uni-datepicker>
+    </div>
+    <div class="uniform-sd">
+        <label slot="my-label">June 2017</label>
+        <input slot="my-date" type="date" min="2017-06-01" max="2017-06-30"/>
+        <template is="shadow-root">
+                <!-- You can use default slot or individual slots if you need -->
+                <uni-datepicker initial-position="2017-06-01"><slot name="my-date"></slot><slot name="my-label"></slot></uni-datepicker>
+            </template>
+    </div>
+    <div class="vaadin">
+        <vaadin-date-picker initial-position="2017-06-01" label="June 2017" min="2017-06-01" max="2017-06-30"></vaadin-date-picker>
+    </div>
+
+
 </body>
+<script>
+    // apply declarative shadow roots
+    Array.from(document.querySelectorAll('template[is="shadow-root"]'), (templ) => {
+        const sroot = templ.parentNode.attachShadow({
+            mode: 'open'
+        });
+        sroot.appendChild(document.importNode(templ.content, true));
+    });
+</script>
+
 </html>

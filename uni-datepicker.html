@@ -10,23 +10,105 @@
         // Fires when an instance of the element is created
         constructor() {
             super();
-            this.attachShadow({mode: 'open'});
+            this.attachShadow({
+                mode: 'open'
+            });
             this.vaadinElement = document.createElement('vaadin-date-picker');
+            this.slotElement = document.createElement('slot');
+            this.slotElement.addEventListener('slotchange', (ev)=>this.slotChangedCallback(ev));
+
+            const hiddenBox = document.createElement('div');
+            hiddenBox.style.display = 'none';
+            hiddenBox.appendChild(this.slotElement);
+            this.shadowRoot.appendChild(hiddenBox);
             this.shadowRoot.appendChild(this.vaadinElement);
+
         }
-        // Fires when an instance was inserted into the document
         connectedCallback() {
-
+            // Handle any children that were already parsed before this
+            // element upgraded.
+            if (this.children) {
+                Array.from(this.children).forEach(this.updateChildText, this)
+            }
+            // FIXME: we should actually observe changes to input and label only
+            // Handle any children that are added after this element
+            // is upgraded.
+            // We do this because the MutationObserver will not fire if
+            // the children were already parsed before the element was
+            // upgraded.
+            this._observer = new MutationObserver(
+                this.childrenChangedCallback.bind(this));
+            this._observer.observe(this, {
+                childList: true
+            });
+            // this.slotChangedCallback();
         }
+        slotChangedCallback(ev){
+            // debugger
+            console.log('slotChangedCallback', this, arguments);
+            // ShadyDOM && ShadyDOM.flush();
+            // debugger
+            // Use assignedNodes whtn polyfill does not support assignedElements -
+            // even though we are interested in elements only.
+            const flattenedChildren = this.slotElement.assignedElements ?
+                this.slotElement.assignedElements({flatten: true}) :
+                this.slotElement.assignedNodes({flatten: true});
+            const input = flattenedChildren.length && flattenedChildren.find(e=>e.matches('input[type="date"]')) || undefined;
+            const label = flattenedChildren.length && flattenedChildren.find(e=>e.matches('label')) || undefined;
 
-        // Fires when an instance was removed from the document
+            if(this.input !== input){
+                console.log('changin input', this, input)
+                this.input = input;
+                this.copyInputsData(input);
+            }
+            if(this.label !== label){
+                console.log('changin label', this, label)
+                this.label = label;
+                this.copyLabelsData(label);
+            }
+        }
+        childrenChangedCallback(changes) {
+            changes.forEach(change => {
+                if (change.type == "childList" && change.addedNodes) {
+                    Array.from(change.addedNodes).forEach(this.updateChildText);
+                }
+                // You could also use change.removedNodes to see if
+                // any children were removed.
+            });
+        }
+        updateChildText(child) {
+            return true;
+        }
         disconnectedCallback() {
-
-        };
+            this._observer.disconnect();
+        }
 
         // Fires when an attribute was added, removed, or updated
         attributeChangedCallback(attr, oldVal, newVal) {
 
-        };
+        }
+
+        copyInputsData(input){
+            this.vaadinElement.autofocus = input.autofocus !== undefined && input.autofocus;
+            this.vaadinElement.disabled = input.disabled !== undefined && input.disabled;
+            // this.vaadinElement.errorMessage = input.getAttribute('errorMessage');
+            // this.vaadinElement.i18n = input.getAttribute('i18n');
+            // FIXME: move per element attrs and props outside add observedAttrs
+            this.vaadinElement.initialPosition = this.hasAttribute('initial-position') ? this.getAttribute('initial-position') : undefined;
+            // this.vaadinElement.invalid = input.getAttribute('invalid');
+            // this.vaadinElement.label = input.getAttribute('label');
+            this.vaadinElement.max = input.max !== undefined && input.max;
+            this.vaadinElement.min = input.min !== undefined && input.min;
+            this.vaadinElement.name = input.name !== undefined && input.name;
+            // this.vaadinElement.opened = input.getAttribute('opened');
+            this.vaadinElement.placeholder = input.placeholder !== undefined && input.placeholder;
+            this.vaadinElement.readonly = input.hasAttribute('readonly');
+            this.vaadinElement.required = input.required !== undefined && input.required;
+            // this.vaadinElement.showWeekNumbers = input.getAttribute('showWeekNumbers');
+            this.vaadinElement.value = input.value !== undefined && input.value;
+        }
+        copyLabelsData(label){
+            this.vaadinElement.label = label.textContent;
+        }
     });
 </script>
