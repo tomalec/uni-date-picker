@@ -40,36 +40,36 @@ Or [download as ZIP](https://github.com/tomalec/uni-datepicker/archive/master.zi
     Or even in Shadow DOM with distributed child
     ```html
     <host-element>
-        <input type="date">
+        <label>Birthday</label>
+        <input type="date" placeholder="pick a date">
         <template is="declarative-shadow-dom">
             <uni-datepicker><slot></slot></uni-datepicker>
         </template>
     </host-element>
     ```
 
-## Options
+## Attributes
 
-Attribute     | Options     | Default      | Description
----           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
+### Native translated to [Vaadin API](https://vaadin.com/components/vaadin-date-picker/html-api)
+Forwarded from decorated `<input>` element to inner vaadin element.
 
-## Methods
+- `autofocus`
+- `disabled`
+- `max`      
+- `min`      
+- `name`     
+- `placeholder`
+- `readonly`
+- `required`
+- `value`    
 
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
+Decorated `<label>`'s `.textContent` gets translated to the `label` attribute of `vaadin-date-picker` element.
 
-## Events
+### Vaadin specifc
+Forwarded from `<uni-datepicker>` to inner vaadin element.
 
-Event         | Description
----           | ---
-`onsomething` | Triggers when something happens.
+- `initial-position`
 
-## CSS Custom Properties
-
-Name                          | Description
----                           | ---
-`--uni-datepicker-laser-color` | Color of the shooted lasers.
 
 ## [Contributing and Development](CONTRIBUTING.md)
 
