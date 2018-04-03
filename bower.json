@@ -1,13 +1,14 @@
 {
-  "name": "uni-datepicker",
+  "name": "uni-date-picker",
   "version": "0.0.0",
   "description": "Decorator-like custom element for `input type='date'` -> `vaadin-date-picker`",
   "license": "MIT",
-  "main": "uni-datepicker.html",
+  "main": "uni-date-picker.html",
   "keywords": [
     "web-components",
     "uniform",
     "datepicker",
+    "date-picker",
     "date",
     "vaadin"
   ],

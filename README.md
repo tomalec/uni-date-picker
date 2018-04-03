@@ -1,4 +1,4 @@
-# &lt;uni-datepicker&gt;
+# &lt;uni-date-picker&gt;
 
 > Decorator-like custom element for `input type='date'` -> `vaadin-date-picker`
 
@@ -6,17 +6,17 @@ Let's you decorate native `input type="date"`, with prettier date-picker.
 
 ## Demo
 
-[Check it live!](http://tomalec.github.io/uni-datepicker)
+[Check it live!](http://tomalec.github.io/uni-date-picker)
 
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install uni-datepicker --save
+$ bower install uni-date-picker --save
 ```
 
-Or [download as ZIP](https://github.com/tomalec/uni-datepicker/archive/master.zip).
+Or [download as ZIP](https://github.com/tomalec/uni-date-picker/archive/master.zip).
 
 ## Usage
 
@@ -29,13 +29,13 @@ Or [download as ZIP](https://github.com/tomalec/uni-datepicker/archive/master.zi
 2. Import custom element:
 
     ```html
-    <link rel="import" href="bower_components/uni-datepicker/uni-datepicker.html">
+    <link rel="import" href="bower_components/uni-date-picker/uni-date-picker.html">
     ```
 
 3. Start using it!
 
     ```html
-    <uni-datepicker><input type="date"></uni-datepicker>
+    <uni-date-picker><input type="date"></uni-date-picker>
     ```
     Or even in Shadow DOM with distributed child
     ```html
@@ -43,7 +43,7 @@ Or [download as ZIP](https://github.com/tomalec/uni-datepicker/archive/master.zi
         <label>Birthday</label>
         <input type="date" placeholder="pick a date">
         <template is="declarative-shadow-dom">
-            <uni-datepicker><slot></slot></uni-datepicker>
+            <uni-date-picker><slot></slot></uni-date-picker>
         </template>
     </host-element>
     ```
@@ -66,7 +66,7 @@ Forwarded from decorated `<input>` element to inner vaadin element.
 Decorated `<label>`'s `.textContent` gets translated to the `label` attribute of `vaadin-date-picker` element.
 
 ### Vaadin specifc
-Forwarded from `<uni-datepicker>` to inner vaadin element.
+Forwarded from `<uni-date-picker>` to inner vaadin element.
 
 - `initial-position`
 
@@ -75,7 +75,7 @@ Forwarded from `<uni-datepicker>` to inner vaadin element.
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/tomalec/uni-datepicker/releases).
+For detailed changelog, check [Releases](https://github.com/tomalec/uni-date-picker/releases).
 
 ## License
 

@@ -4,14 +4,14 @@
 <head>
 
     <meta charset="utf-8">
-    <title>&lt;uni-datepicker&gt;</title>
+    <title>&lt;uni-date-picker&gt;</title>
     <link rel="stylesheet" href="http://juicy.github.io/github-markdown-css/github-markdown.css">
 
     <!-- Imports polyfill -->
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
 
     <!-- Imports custom element -->
-    <link rel="import" href="uni-datepicker.html">
+    <link rel="import" href="uni-date-picker.html">
     <style>
         html {
             display: flex;
@@ -64,13 +64,13 @@
     <h3>Plain date picker</h3>
 
     <div class="uniform"><div>
-        <uni-datepicker><input type="date"/></uni-datepicker>
+        <uni-date-picker><input type="date"/></uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <div>
             <input type="date"/>
             <template is="shadow-root">
-                <uni-datepicker><slot></slot></uni-datepicker>
+                <uni-date-picker><slot></slot></uni-date-picker>
             </template>
         </div>
     </div></div>
@@ -80,13 +80,13 @@
 
     <h3>Label attribute</h3>
     <div class="uniform"><div>
-        <uni-datepicker><label>Pick a date</label><input type="date" /></uni-datepicker>
+        <uni-date-picker><label>Pick a date</label><input type="date" /></uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <label>Pick a date</label>
         <input type="date" />
         <template is="shadow-root">
-            <uni-datepicker><slot></slot></uni-datepicker>
+            <uni-date-picker><slot></slot></uni-date-picker>
         </template>
     </div></div>
     <div class="vaadin"><div>
@@ -98,12 +98,12 @@
 
     <div class="example">
         <div class="uniform"><div>
-            <uni-datepicker><input type="date" placeholder="Pick a date" /></uni-datepicker>
+            <uni-date-picker><input type="date" placeholder="Pick a date" /></uni-date-picker>
         </div></div>
         <div class="uniform-sd"><div>
             <input type="date" placeholder="Pick a date" />
             <template is="shadow-root">
-                <uni-datepicker><slot></slot></uni-datepicker>
+                <uni-date-picker><slot></slot></uni-date-picker>
             </template>
         </div></div>
         <div class="vaadin"><div>
@@ -114,14 +114,14 @@
     <h3>Label and placeholder attributes together</h3>
 
     <div class="uniform"><div>
-        <uni-datepicker><label>Birthday</label><input type="date" placeholder="Pick a date" /></uni-datepicker>
+        <uni-date-picker><label>Birthday</label><input type="date" placeholder="Pick a date" /></uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <label slot="my-label">Birthday</label>
         <input slot="my-date" type="date" placeholder="Pick a date" />
         <template is="shadow-root">
             <!-- You can use default slot or individual slots if you need -->
-            <uni-datepicker><slot name="my-date"></slot><slot name="my-label"></slot></uni-datepicker>
+            <uni-date-picker><slot name="my-date"></slot><slot name="my-label"></slot></uni-date-picker>
         </template>
     </div></div>
     <div class="vaadin"><div>
@@ -131,14 +131,14 @@
     <h3>Pre-selected value</h3>
 
     <div class="uniform"><div>
-        <uni-datepicker><label>Birthday</label><input type="date" value="1980-08-14"/></uni-datepicker>
+        <uni-date-picker><label>Birthday</label><input type="date" value="1980-08-14"/></uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <label>Birthday</label>
         <input type="date" value="1980-08-14"/>
         <template is="shadow-root">
             <!-- You can use default slot or individual slots if you need -->
-            <uni-datepicker><slot></slot></uni-datepicker>
+            <uni-date-picker><slot></slot></uni-date-picker>
         </template>
     </div></div>
     <div class="vaadin"><div>
@@ -148,8 +148,8 @@
     <h3>Disabled and readonly</h3>
 
     <div class="uniform"><div>
-        <uni-datepicker><label>Disabled input</label><input disabled type="date" value="1980-08-14"/></uni-datepicker>
-        <uni-datepicker><label>Readonly input</label><input readonly type="date" value="1980-08-14"/></uni-datepicker>
+        <uni-date-picker><label>Disabled input</label><input disabled type="date" value="1980-08-14"/></uni-date-picker>
+        <uni-date-picker><label>Readonly input</label><input readonly type="date" value="1980-08-14"/></uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <label slot="disabled">Disabled input</label>
@@ -158,8 +158,8 @@
         <input slot="readonly" readonly type="date" value="1980-08-14"/>
         <template is="shadow-root">
             <!-- You can use default slot or individual slots if you need -->
-            <uni-datepicker><slot name="disabled"></slot></uni-datepicker>
-            <uni-datepicker><slot name="readonly"></slot></uni-datepicker>
+            <uni-date-picker><slot name="disabled"></slot></uni-date-picker>
+            <uni-date-picker><slot name="readonly"></slot></uni-date-picker>
         </template>
     </div></div>
     <div class="vaadin"><div>
@@ -168,17 +168,17 @@
     </div></div>
 
     <h3>Initial position*</h3>
-    <small>* - <code>initial-position</code> needs to be attribute set on <code>uni-datepicker</code></small>
+    <small>* - <code>initial-position</code> needs to be attribute set on <code>uni-date-picker</code></small>
 
     <div class="uniform"><div>
-        <uni-datepicker initial-position="1980-01-01"><label>Birthday</label><input type="date"/></uni-datepicker>
+        <uni-date-picker initial-position="1980-01-01"><label>Birthday</label><input type="date"/></uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <label slot="my-label">Birthday</label>
         <input slot="my-date" type="date"/>
         <template is="shadow-root">
             <!-- You can use default slot or individual slots if you need -->
-            <uni-datepicker initial-position="1980-01-01"><slot name="my-date"></slot><slot name="my-label"></slot></uni-datepicker>
+            <uni-date-picker initial-position="1980-01-01"><slot name="my-date"></slot><slot name="my-label"></slot></uni-date-picker>
         </template>
     </div></div>
     <div class="vaadin"><div>
@@ -189,17 +189,17 @@
 
 
     <div class="uniform"><div>
-        <uni-datepicker initial-position="2017-06-01">
+        <uni-date-picker initial-position="2017-06-01">
             <label>June 2017</label>
             <input type="date" min="2017-06-01" max="2017-06-30"/>
-        </uni-datepicker>
+        </uni-date-picker>
     </div></div>
     <div class="uniform-sd"><div>
         <label slot="my-label">June 2017</label>
         <input slot="my-date" type="date" min="2017-06-01" max="2017-06-30"/>
         <template is="shadow-root">
                 <!-- You can use default slot or individual slots if you need -->
-                <uni-datepicker initial-position="2017-06-01"><slot name="my-date"></slot><slot name="my-label"></slot></uni-datepicker>
+                <uni-date-picker initial-position="2017-06-01"><slot name="my-date"></slot><slot name="my-label"></slot></uni-date-picker>
             </template>
     </div></div>
     <div class="vaadin"><div>
