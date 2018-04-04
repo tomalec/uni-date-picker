@@ -64,6 +64,7 @@
     <h2>Uniform, Uniform in Shadow DOM & Vaadin examples</h2>
 
     <h3>Plain date picker</h3>
+    <p>With theme CSS custom property overwritten <code>--material-primary-color: green</code> in declarative shadow root</p>
 
     <div class="uniform"><div>
         <uni-date-picker><input type="date"/></uni-date-picker>
@@ -72,6 +73,11 @@
         <div>
             <input type="date"/>
             <template is="shadow-root">
+                <style>
+                    uni-date-picker{
+                        --material-primary-color: green;
+                    }
+                </style>
                 <uni-date-picker><slot></slot></uni-date-picker>
             </template>
         </div>
