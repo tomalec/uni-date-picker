@@ -7,6 +7,8 @@ Let's you decorate native `input type="date"`, with prettier date-picker.
 ## Demo
 
 [Check it live!](http://tomalec.github.io/uni-date-picker)
+[Themed](http://tomalec.github.io/uni-date-picker/index-material.html)
+[Integrated with Polymer notification protocol](http://tomalec.github.io/uni-date-picker/index-polymer-binding.html)
 
 ## Install
 
